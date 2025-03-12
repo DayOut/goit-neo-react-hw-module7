@@ -1,0 +1,34 @@
+.contactForm {
+  width: 100%;
+  margin: 0 auto 1rem;
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.label {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid var(--secondary-color);
+  font-size: 16px;
+}
+
+.errorMessage {
+  margin-top: 4px;
+  font-size: 14px;
+  color: red;
+}
+
+.submitBtn {
+  margin: 0 auto;
+}

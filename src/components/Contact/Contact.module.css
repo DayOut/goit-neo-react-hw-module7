@@ -1,0 +1,18 @@
+.contactCard {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--secondary-color);
+}
+
+.contactInfo {
+  flex-grow: 1;
+  padding-right: 1rem;
+}
+
+.contactInfoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

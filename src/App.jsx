@@ -1,24 +1,31 @@
-import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
-import { store, persistor } from './redux/store';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "./redux/contactsApi.js";
+import { selectIsLoading, selectError } from "./redux/contactsSlice";
 
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import SearchBox from './components/SearchBox/SearchBox';
-import css from './App.module.css';
+import Loader from "./components/Loader/Loader";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import SearchBox from "./components/SearchBox/SearchBox";
+import css from "./App.module.css";
 
 function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <div className={css.container}>
-          <h1 className={css.heading}>Phonebook</h1>
-          <ContactForm />
-          <SearchBox />
-          <ContactList />
-        </div>
-      </PersistGate>
-    </Provider>
+    <div className={css.container}>
+      <h1 className={css.heading}>Phonebook</h1>
+      <ContactForm />
+      <SearchBox />
+      {isLoading && <Loader />}
+      {error && <p>Error: {error}</p>}
+      <ContactList />
+    </div>
   );
 }
 

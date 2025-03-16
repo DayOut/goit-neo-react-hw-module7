@@ -1,26 +1,24 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useId } from 'react';
-import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
-import { addContact } from '../../redux/contactsSlice';
-import Button from '../Button/Button';
+import * as Yup from "yup";
 
-import css from './ContactForm.module.css';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsApi.js";
+import Button from "../Button/Button";
+
+import css from "./ContactForm.module.css";
+import { useId } from "react";
 
 const ContactFormSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, 'To short')
-    .max(50, 'To Long')
-    .required('Required'),
+  name: Yup.string().min(3, "To short").max(50, "To Long").required("Required"),
   number: Yup.string()
-    .min(3, 'To short')
-    .max(50, 'To long')
-    .required('Required'),
+    .min(3, "To short")
+    .max(50, "To long")
+    .required("Required"),
 });
 
 const defaultValues = {
-  name: '',
-  number: '',
+  name: "",
+  number: "",
 };
 
 export default function ContactForm() {
@@ -47,16 +45,34 @@ export default function ContactForm() {
               <label htmlFor={nameFieldId} className={css.label}>
                 Name
               </label>
-              <Field type="text" name="name" id={nameFieldId} className={css.input} />
-              <ErrorMessage name="name" component="div" className={css.errorMessage} />
+              <Field
+                type="text"
+                name="name"
+                id={nameFieldId}
+                className={css.input}
+              />
+              <ErrorMessage
+                name="name"
+                component="div"
+                className={css.errorMessage}
+              />
             </div>
 
             <div className={css.formGroup}>
               <label htmlFor={numberFieldId} className={css.label}>
                 Number
               </label>
-              <Field type="text" name="number" id={numberFieldId} className={css.input} />
-              <ErrorMessage name="number" component="div" className={css.errorMessage} />
+              <Field
+                type="text"
+                name="number"
+                id={numberFieldId}
+                className={css.input}
+              />
+              <ErrorMessage
+                name="number"
+                component="div"
+                className={css.errorMessage}
+              />
             </div>
 
             <Button

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "./redux/contactsApi.js";
+import { fetchContacts } from "./redux/contactsOps.js";
 import { selectIsLoading, selectError } from "./redux/contactsSlice";
 
 import Loader from "./components/Loader/Loader";

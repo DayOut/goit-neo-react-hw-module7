@@ -1,4 +1,4 @@
-import { addContact, deleteContact, fetchContacts } from "./contactsApi.js";
+import { addContact, deleteContact, fetchContacts } from "./contactsOps.js";
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 // Початковий стан
